@@ -1,8 +1,6 @@
 from pydantic import BaseModel
+from shemas.park import Park
 
-
-class Park(BaseModel):
-    name: str
 
 class Bus(BaseModel):
     number: int

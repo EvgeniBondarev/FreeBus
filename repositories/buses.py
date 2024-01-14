@@ -1,6 +1,6 @@
 from typing import List
 
-from shemas.buses import Bus, Park
+from shemas.bus import Bus, Park
 
 
 class BusRepository:

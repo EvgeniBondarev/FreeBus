@@ -3,7 +3,7 @@ from typing import List
 from fastapi import APIRouter, Depends
 
 from depends import get_book_service
-from shemas.buses import Bus, Park
+from shemas.bus import Bus
 from services.buses import BusService
 
 router = APIRouter(prefix="/bus", tags=["bus"])

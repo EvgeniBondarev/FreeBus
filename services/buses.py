@@ -1,7 +1,7 @@
 from typing import List
 
 from repositories.buses import BusRepository
-from shemas.buses import Bus
+from shemas.bus import Bus
 
 
 class BusService:
