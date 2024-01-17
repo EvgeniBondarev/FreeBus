@@ -1,5 +1,5 @@
-from repositories.buses import BusRepository
-from services.buses import BusService
+from repositories.bus_repository import BusRepository
+from services.bus import BusService
 
 """
 Файл внедрения зависимостей

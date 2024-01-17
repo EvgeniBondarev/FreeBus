@@ -7,8 +7,8 @@ from alembic import context
 
 from db.db import Base
 
-from models.bus import Bus
-from models.park import Park
+from models.bus import Buses
+from models.park import Parks
 
 
 # this is the Alembic Config object, which provides
