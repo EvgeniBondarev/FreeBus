@@ -4,9 +4,6 @@ from sqlalchemy import insert, select, delete, update
 from sqlalchemy.orm import DeclarativeMeta
 
 from db.db import async_session_maker
-from models.bus import Buses
-from models.park import Parks
-from shemas.park import Park
 
 
 class AbstractRepository(ABC):
@@ -32,11 +29,13 @@ class SQLAlchemyRepository(AbstractRepository):
             return res.scalar_one()
 
     async def edit_one(self, id: int, data: dict) -> int:
-        stmt = update(self.model).values(**data).filter_by(id=id).returning(self.model.id)
-        res = await self.session.execute(stmt)
-        return res.scalar_one()
+        async with async_session_maker() as session:
+            stmt = update(self.model).values(**data).filter_by(id=id).returning(self.model.id)
+            res = await session.execute(stmt)
+            await session.commit()
+            return res.scalar_one()
 
-    async def find_all(self, ):
+    async def find_all(self):
         async with async_session_maker() as session:
             query = select(self.model) if self.join_models is None else select(self.model, *self.join_models)
             if self.join_models:
