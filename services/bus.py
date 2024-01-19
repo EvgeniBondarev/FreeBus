@@ -2,8 +2,8 @@ from typing import List
 
 from models.bus import Buses
 from repositories.bus_repository import BusRepository
-from shemas.bus import BusAddSchema, BusSchema
-from shemas.park import ParkShema
+from schemas.bus import BusAddSchema, BusSchema
+
 
 
 class BusService:

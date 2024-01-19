@@ -1,10 +1,10 @@
 from pydantic import BaseModel
-from shemas.park import ParkShema
+from schemas.park import ParkSchema
 
 
 class BusSchema(BaseModel):
     number: int
-    park: ParkShema
+    park: ParkSchema
 
 class BusAddSchema(BaseModel):
     number: int

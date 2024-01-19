@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Mapped, mapped_column
 from db.db import Base
-from shemas.park import ParkShema
+from schemas.park import ParkSchema
 
 
 class Parks(Base):
@@ -9,8 +9,8 @@ class Parks(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str]
 
-    def to_api_shema(self) -> ParkShema:
-        return ParkShema(
+    def to_api_shema(self) -> ParkSchema:
+        return ParkSchema(
             name=self.name
         )
 

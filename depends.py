@@ -1,15 +1,14 @@
 from repositories.bus_repository import BusRepository
 from services.bus import BusService
+from services.ticket import TicketService
 
-"""
-Файл внедрения зависимостей
-"""
-# repository - работа с БД
 bus_repository = BusRepository()
 
-# service - слой UseCase
-bus_service = BusService(bus_repository)
 
+bus_service = BusService(bus_repository)
+ticket_service = TicketService(bus_repository)
 
 def get_book_service() -> BusService:
    return bus_service
+def get_ticket_service() -> TicketService:
+   return ticket_service

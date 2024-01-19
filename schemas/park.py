@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
 
-class ParkShema(BaseModel):
+class ParkSchema(BaseModel):
     name: str
