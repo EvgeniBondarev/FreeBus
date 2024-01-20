@@ -27,8 +27,7 @@ async def get_ticket(bus_number: int,
     description="Получение HTML билета по номеру автобуса.",
     )
 async def get_html_ticket(request: Request,
-                          result = Depends(get_ticket)) -> TicketSchema:
-
+                          result=Depends(get_ticket)) -> TicketSchema:
    return templates.TemplateResponse(
        request=request, name="ticket.html", context={
            "bus_number": result.bus.number,
