@@ -1,8 +1,9 @@
 from sqlalchemy import MetaData
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
+from config import *
 
-engine = create_async_engine("sqlite+aiosqlite:///sqlite.db", echo=True)
+engine = create_async_engine(POSTGRES_ALCHIMY_URL, echo=True)
 async_session_maker = async_sessionmaker(engine, expire_on_commit=False)
 
 class Base(DeclarativeBase):

@@ -5,6 +5,9 @@ from sqlalchemy import pool
 
 from alembic import context
 
+
+from config import POSTGRES_URI
+
 from db.db import Base
 
 from models.bus import Buses
@@ -14,7 +17,12 @@ from models.park import Parks
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
-config.set_main_option("sqlalchemy.url", "sqlite:///sqlite.db")
+#config.set_main_option("sqlalchemy.url", "sqlite:///sqlite.db")
+
+
+section = config.config_ini_section
+config.set_section_option(section, "POSTGRES_URI", POSTGRES_URI)
+
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
