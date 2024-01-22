@@ -1,12 +1,16 @@
 from typing import Annotated
 from fastapi import APIRouter, Depends, HTTPException, Path
 
+from config import POSTGRES_URI, POSTGRES_ALCHIMY_URL
 from depends import get_book_service
 from schemas.bus import BusSchema, BusAddSchema, BusEditSchema
 from services.bus import BusService
 
 router = APIRouter(prefix="/bus", tags=["Bus"])
 
+@router.get("/env")
+async def get_env() -> dict:
+    return {"env" : POSTGRES_URI, "uri": POSTGRES_ALCHIMY_URL}
 
 @router.get(
 "",
@@ -48,3 +52,4 @@ async def edit_bus(id: Annotated[int, Path(title="ID of the item to be changed")
                    bus: BusEditSchema, bus_service: BusService = Depends(get_book_service)) -> dict:
    id = await bus_service.edit_bus(id, bus)
    return {"id" : id}
+
