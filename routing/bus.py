@@ -8,10 +8,6 @@ from services.bus import BusService
 
 router = APIRouter(prefix="/bus", tags=["Bus"])
 
-@router.get("/env")
-async def get_env() -> dict:
-    return {"env" : POSTGRES_URI, "uri": POSTGRES_ALCHIMY_URL}
-
 @router.get(
 "",
     responses={400: {"description": "Bad request"}},
